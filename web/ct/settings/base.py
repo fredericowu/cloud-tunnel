@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'rest_framework',
-    'client.apps.ClientConfig',
+    'connection.apps.ConnectionConfig',
 ]
 
 MIDDLEWARE = [
@@ -206,3 +206,5 @@ DATABASES = {
         'CONN_MAX_AGE': 60,
     }
 }
+
+DEFAULT_GROUP_NAME = "Standard User"

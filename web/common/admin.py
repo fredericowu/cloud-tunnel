@@ -1,15 +1,11 @@
 from django.contrib import admin
 import datetime
 
-class ModelAdminCommon(admin.ModelAdmin):
-    def duracao(self, obj):
-        fim = obj.fim
-        if not fim:
-            fim = datetime.date.today()
 
-        duration = fim - obj.inicio
-        return "{0} dias".format(duration.days)
-    duracao.short_description = "duração"
+class ModelAdminCommon(admin.ModelAdmin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.exclude = list(self.exclude if self.exclude else []) + ['user']
 
     def save_model(self, request, obj, form, change):
         if not obj.user:

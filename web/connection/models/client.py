@@ -6,6 +6,11 @@ from django.utils import timezone
 
 class Client(models.Model):
     name = models.CharField(max_length=150)
+    client_id = models.CharField(max_length=50, null=True, blank=True, default=None)
+    external_ip = models.CharField(max_length=15, null=True, blank=True, default=None)
+    internal_ip = models.CharField(max_length=15, null=True, blank=True, default=None)
+    gateway = models.CharField(max_length=15, null=True, blank=True, default=None)
+    network_mask = models.CharField(max_length=15, null=True, blank=True, default=None)
     authorized = models.BooleanField(default=False)
     last_seen = models.DateField(null=True, blank=True, default=None)
     creation = models.DateField(auto_now_add=True)
@@ -19,7 +24,7 @@ class Client(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        super(Client, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
         if not self.name or not self.last_seen:
             if not self.name:
                 self.name = "Client-{}".format(self.pk)
