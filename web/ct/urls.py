@@ -35,8 +35,7 @@ urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-#    url(r'^admin/', admin_site.urls),
-
     path('admin/', admin.site.urls),
     url(r'^accounts/',include('allauth.urls')),
+    url(r'^', include('connection.urls')),
 ]
