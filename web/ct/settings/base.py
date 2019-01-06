@@ -208,3 +208,9 @@ DATABASES = {
 }
 
 DEFAULT_GROUP_NAME = "Standard User"
+
+REDIS = {
+    'HOST': 'localhost',
+    'PASSWORD': '',
+    'PORT': 26379,
+}
